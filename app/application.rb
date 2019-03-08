@@ -1,6 +1,6 @@
 class Application
 
-  @@items = []
+  @@item = []
 
   def call(env)
     resp = Rack::Response.new
@@ -8,7 +8,7 @@ class Application
 
     if req.path.match(/item/)
       item_name = req.path.split("/item/").last
-      if item = @@items.find{|i| i.name == item_name}
+      if item = @@item.find{|i| i.name == item_name}
       resp.write item.price
     else
       resp.write "Route not found"
